@@ -3,14 +3,14 @@
  * @description representation of a block
  * @param {number} rowId
  * @param {number} columnId
- * @param {string} imagePath
+ * @param {Sprite} sprite
  * @constructor
  */
-var Block = function (columnId, rowId, imagePath) {
+var Block = function (columnId, rowId, sprite) {
   Renderable.call(this);
   this.columnId = columnId;
   this.rowId = rowId;
-  this.imagePath = imagePath;
+  this.imagePath = sprite.imagePath;
 };
 
 Block.prototype = Object.create(Renderable.prototype);

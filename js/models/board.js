@@ -23,6 +23,7 @@ var BOARD = function (terrainLevels, numCols) {
   BoardSingleton.prototype = Object.create(Renderable.prototype);
 
   BoardSingleton.prototype.render = function () {
+    CTX.renderer.clearRect(0, 0, CTX.canvas.width, CTX.canvas.height);
     this.canvas.forEach(function (rowLand) {
       rowLand.forEach(function (block) {
         block.render();
@@ -33,12 +34,12 @@ var BOARD = function (terrainLevels, numCols) {
   return new BoardSingleton();
 }(
   [
-    'images/water-block.png',   // Top row is water
-    'images/stone-block.png',   // Row 1 of 3 of stone
-    'images/stone-block.png',   // Row 2 of 3 of stone
-    'images/stone-block.png',   // Row 3 of 3 of stone
-    'images/grass-block.png',   // Row 1 of 2 of grass
-    'images/grass-block.png'    // Row 2 of 2 of grass
+    ENVIRONMENT_SPRITE_FACTORY.WATER_BLOCK,
+    ENVIRONMENT_SPRITE_FACTORY.STONE_BLOCK,
+    ENVIRONMENT_SPRITE_FACTORY.STONE_BLOCK,
+    ENVIRONMENT_SPRITE_FACTORY.STONE_BLOCK,
+    ENVIRONMENT_SPRITE_FACTORY.GRASS_BLOCK,
+    ENVIRONMENT_SPRITE_FACTORY.GRASS_BLOCK
   ],
   5
 );
