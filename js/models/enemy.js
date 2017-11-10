@@ -23,3 +23,10 @@ Enemy.prototype.getRenderData = function () {
     position: new Position(this.columnPosition, this.rowId * CTX.blockMetaInfo.row)
   };
 };
+
+Enemy.prototype.update = function (timeChange) {
+  var newPosition = this.columnPosition + timeChange * this.speed;
+  var rightBoundary = CTX.canvas.width;
+  var leftBoundary = -1 * this.sprite.width; // initial point that an enemy will start
+  this.columnPosition = rightBoundary < newPosition ? newPosition - rightBoundary + leftBoundary : newPosition;
+};

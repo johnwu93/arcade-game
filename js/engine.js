@@ -57,9 +57,9 @@ Engine.prototype.checkCollisions = function checkCollisions() {
 };
 
 Engine.prototype.updateEntities = function updateEntities(dt) {
-  // this.enemies.forEach(function (enemy) {
-  //   enemy.update(dt);
-  // });
+  this.enemies.forEach(function (enemy) {
+    enemy.update(dt);
+  });
 };
 
 Engine.prototype.render = function render() {
