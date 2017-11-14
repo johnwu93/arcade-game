@@ -1,7 +1,10 @@
+var mainCharacter = new Player(5, 2, CHARACTER_SPRITE_FACTORY.CHARACTER_BOY);
+mainCharacter.bindKeyBoard();
+
 var engine = new Engine([
   new Enemy(3, 100, 100, CHARACTER_SPRITE_FACTORY.ENEMY_BUG),
   new Enemy(2, 100, 200, CHARACTER_SPRITE_FACTORY.ENEMY_BUG)
-]);
+], mainCharacter);
 
 
 function loadResources() {

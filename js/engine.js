@@ -16,11 +16,13 @@
 /**
  *
  * @param {Array.<Enemy>} enemies
+ * @param {Player} player
  * @constructor
  */
-var Engine = function Engine(enemies) {
+var Engine = function Engine(enemies, player) {
   'use strict';
   this.enemies = enemies;
+  this.player = player;
 };
 
 /**
@@ -60,6 +62,7 @@ Engine.prototype.updateEntities = function updateEntities(dt) {
   this.enemies.forEach(function (enemy) {
     enemy.update(dt);
   });
+  this.player.update();
 };
 
 Engine.prototype.render = function render() {
@@ -68,6 +71,7 @@ Engine.prototype.render = function render() {
    */
   BOARD.render();
   this.renderEntities();
+  this.player.render();
 };
 
 Engine.prototype.renderEntities = function renderEntities() {
