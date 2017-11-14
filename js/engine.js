@@ -23,6 +23,8 @@ var Engine = function Engine(enemies, player) {
   'use strict';
   this.enemies = enemies;
   this.player = player;
+  this.startRow = player.getRow();
+  this.startColumn = player.getColumn();
 };
 
 /**
@@ -51,11 +53,38 @@ Engine.prototype.simulate = function simulate(lastTime) {
 
 Engine.prototype.update = function update(dt) {
   this.updateEntities(dt);
-  this.checkCollisions();
+  this.computeCollision();
 };
 
-Engine.prototype.checkCollisions = function checkCollisions() {
+Engine.prototype.computeCollision = function () {
+  'use strict';
 
+  /**
+   * @param {Enemy} enemy
+   */
+  function checkCollide(enemy) {
+    if (enemy.rowId !== this.player.getRow()) {
+      return false;
+    }
+    var enemyLeftStartLocation = enemy.columnPosition;
+    var enemyRightEndLocation = enemyLeftStartLocation + enemy.sprite.width;
+
+    var playerLeftStartLocation = computeBlockColumnPosition(this.player.getColumn());
+    var playerRightEndLocation = playerLeftStartLocation + this.player.sprite.width;
+
+    return (enemyLeftStartLocation <= playerLeftStartLocation && playerLeftStartLocation <= enemyRightEndLocation) ||
+      (enemyLeftStartLocation <= playerRightEndLocation && playerRightEndLocation <= enemyRightEndLocation);
+  }
+
+  function runCollideAction() {
+    console.log('Player Collided');
+    this.player.setRow(this.startRow);
+    this.player.setColumn(this.startColumn);
+  }
+
+  if (_.some(this.enemies, checkCollide.bind(this))) {
+    runCollideAction.call(this);
+  }
 };
 
 Engine.prototype.updateEntities = function updateEntities(dt) {
