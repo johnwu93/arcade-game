@@ -8,19 +8,26 @@
  * @constructor
  */
 var Enemy = function Enemy(rowId, columnPosition, speed, sprite) {
-  Renderable.call(this);
+  RenderableUnit.call(this);
   this.rowId = rowId;
   this.columnPosition = columnPosition;
   this.speed = speed;
   this.sprite = sprite;
 };
 
-Enemy.prototype = Object.create(Renderable.prototype);
+Enemy.prototype = Object.create(RenderableUnit.prototype);
 
+/**
+ * @description Row position needs to be computed by finding the displacement of the center of the
+ * enemy's sprite and the block's sprite
+ * @return {{imagePath: string, position: Position}}
+ */
 Enemy.prototype.getRenderData = function () {
+  var blockOffset = computeBlockRowPosition(this.rowId);
+  var rowPosition = blockOffset + BOARD.canvas[this.rowId].alignRowCenter(this.sprite);
   return {
     imagePath: this.sprite.imagePath,
-    position: new Position(this.columnPosition, this.rowId * CTX.blockMetaInfo.row)
+    position: new Position(this.columnPosition, rowPosition)
   };
 };
 

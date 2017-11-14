@@ -1,11 +1,11 @@
 'use strict';
-// var canvas = doc.createElement('canvas');
-// var ctx = canvas.getContext('2d');
+
 /**
- * @description Abstract class that will render an entity
+ * @description Renders an individual unit, such as a character or block based on sprite and
+ * position
  * @constructor
  */
-var Renderable = function () {
+var RenderableUnit = function () {
 };
 
 /**
@@ -14,11 +14,11 @@ var Renderable = function () {
  * @abstract
  * @return {{imagePath: string, position: Position}}
  */
-Renderable.prototype.getRenderData = function () {
+RenderableUnit.prototype.getRenderData = function () {
   throw Error('Need to implement the function getRenderData');
 };
 
-Renderable.prototype.render = function () {
+RenderableUnit.prototype.render = function () {
   // noinspection JSUnresolvedFunction
   var renderInfo = this.getRenderData();
   var column = renderInfo.position.column;
