@@ -25,6 +25,7 @@ var Engine = function Engine(enemies, player) {
   this.player = player;
   this.startRow = player.getRow();
   this.startColumn = player.getColumn();
+  this.statistics = new Statistics(0, bindScore);
 };
 
 /**
@@ -44,6 +45,10 @@ Engine.prototype.simulate = function simulate(lastTime) {
 
   this.update(dt);
   this.render();
+
+  if (this.isWin()) {
+    this.runWinActions();
+  }
 
   /* Use the browser's requestAnimationFrame function to call this
    * function again as soon as the browser is able to draw another frame.
@@ -77,14 +82,26 @@ Engine.prototype.computeCollision = function () {
   }
 
   function runCollideAction() {
-    console.log('Player Collided');
-    this.player.setRow(this.startRow);
-    this.player.setColumn(this.startColumn);
+    this.resetPlayerPosition();
   }
 
   if (_.some(this.enemies, checkCollide.bind(this))) {
     runCollideAction.call(this);
   }
+};
+
+Engine.prototype.isWin = function () {
+  return this.player.getRow() === 0;
+};
+
+Engine.prototype.incrementWinScore = function () {
+  this.statistics.setPoints(this.statistics.getPoints() + 1);
+};
+
+Engine.prototype.runWinActions = function () {
+  'use strict';
+  this.resetPlayerPosition();
+  this.incrementWinScore();
 };
 
 Engine.prototype.updateEntities = function updateEntities(dt) {
@@ -112,11 +129,13 @@ Engine.prototype.renderEntities = function renderEntities() {
   });
 };
 
-Engine.prototype.reset = function () {
-
+Engine.prototype.resetPlayerPosition = function () {
+  'use strict';
+  this.player.setRow(this.startRow);
+  this.player.setColumn(this.startColumn);
 };
 
 Engine.prototype.init = function init() {
-  this.reset();
+  this.resetPlayerPosition();
   this.simulate(Date.now());
 };

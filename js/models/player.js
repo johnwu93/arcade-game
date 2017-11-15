@@ -116,7 +116,6 @@ var Player = (function () {
 
   Player.prototype.getRenderData = function () {
     'use strict';
-    console.log(this.getRow());
     var blockOffset = computeBlockRowPosition(this.getRow());
     var rowPosition = blockOffset + BOARD.canvas[this.getRow()].alignRowCenter(this.sprite);
     var colPosition = computeBlockColumnPosition(this.getColumn());
