@@ -9,5 +9,6 @@ var ENVIRONMENT_SPRITE_FACTORY = {
 
 var CHARACTER_SPRITE_FACTORY = {
   ENEMY_BUG: new Sprite('images/enemy-bug.png', new Position(SPRITE_COLUMN_CENTER, 115)),
-  CHARACTER_BOY: new Sprite('images/char-boy.png', new Position(SPRITE_COLUMN_CENTER, 105))
+  PLAYER_BOY: new Sprite('images/char-boy.png', new Position(SPRITE_COLUMN_CENTER, 105)),
+  PLAYER_GIRL: new Sprite('images/char-princess-girl.png', new Position(SPRITE_COLUMN_CENTER, 95))
 };

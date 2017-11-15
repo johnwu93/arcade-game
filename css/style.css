@@ -1,4 +1,9 @@
 .lives--font {
-  color:#888;
-  font-size:14px;
+  color: #888;
+  font-size: 14px;
+}
+
+
+.start-game__character-header--text {
+  font-weight: 300;
 }

@@ -9,6 +9,23 @@
 </head>
 <body class="text-center">
 
+  <aside class="modal fade" id="characterSelectionModal" tabindex="-1" aria-hidden="true" data-backdrop="static"  data-keyboard="false">
+    <section class="modal-dialog" role="document">
+      <div class="modal-content">
+        <article class="modal-body">
+
+          <h1 class="start-game__header text-center">Welcome</h1>
+
+          <h3 class="start-game__character-header start-game__character-header--text text-center">Please Choose a
+            Character</h3>
+
+          <section class="start-game__character-selection">
+          </section>
+        </article>
+      </div>
+    </section>
+  </aside>
+
   <article class="container">
     <h1 class="text-uppercase">Frogger Game</h1>
 
@@ -29,7 +46,9 @@
     </div>
   </article>
 
-  <script src="node_modules/jquery/dist/jquery.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
   <script src="node_modules/lodash/lodash.js"></script>
 
@@ -50,6 +69,8 @@
   <script src="js/models/statistics.js"></script>
   <script src="js/statisticsview.js"></script>
 
+  <script src="js/models/engineinitializer.js"></script>
+  <script src="js/characterselectionmodalview.js"></script>
   <script src="js/resources.js"></script>
   <script src="js/engine.js"></script>
   <script src="js/app.js"></script>
