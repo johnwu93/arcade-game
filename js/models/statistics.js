@@ -1,6 +1,11 @@
 // noinspection JSUnusedGlobalSymbols
 var Statistics = (function () {
-  var myPoints, myPointsCallback;
+  var myPoints, myPointsChangeCallback, myLives, myLivesChangeCallback;
+
+  /**
+   * @callback livesChangeCallback
+   * @param {number}
+   */
 
   /**
    * @callback pointsChangeCallback
@@ -10,24 +15,40 @@ var Statistics = (function () {
   /**
    * @description Keeps statistics of the game
    * @param {number} points
-   * @param {pointsChangeCallback} pointsCallback
+   * @param {pointsChangeCallback} pointsChangeCallback
+   * @param {number} lives
+   * @param livesChangeCallback
    * @constructor
    */
   // noinspection FunctionNamingConventionJS
-  function Statistics(points, pointsCallback) {
-    myPointsCallback = pointsCallback;
+  function Statistics(points, pointsChangeCallback, lives, livesChangeCallback) {
+    myPointsChangeCallback = pointsChangeCallback;
+    myLivesChangeCallback = livesChangeCallback;
     this.setPoints(points);
+    this.setLives(lives);
   }
 
   Statistics.prototype.setPoints = function setPoints(points) {
     'use strict';
     myPoints = points;
-    myPointsCallback(myPoints);
+    myPointsChangeCallback(myPoints);
   };
 
   Statistics.prototype.getPoints = function getPoints() {
     'use strict';
     return myPoints;
   };
+
+  Statistics.prototype.setLives = function setLives(lives) {
+    'use strict';
+    myLives = lives;
+    myLivesChangeCallback(myLives);
+  };
+
+  Statistics.prototype.getLives = function getLives() {
+    'use strict';
+    return myLives;
+  };
+
   return Statistics;
 })();

@@ -25,7 +25,7 @@ var Engine = function Engine(enemies, player) {
   this.player = player;
   this.startRow = player.getRow();
   this.startColumn = player.getColumn();
-  this.statistics = new Statistics(0, bindScore);
+  this.statistics = new Statistics(0, bindScore, 3, bindLives);
 };
 
 /**
@@ -83,6 +83,7 @@ Engine.prototype.computeCollision = function () {
 
   function runCollideAction() {
     this.resetPlayerPosition();
+    this.loseLife();
   }
 
   if (_.some(this.enemies, checkCollide.bind(this))) {
@@ -96,6 +97,10 @@ Engine.prototype.isWin = function () {
 
 Engine.prototype.incrementWinScore = function () {
   this.statistics.setPoints(this.statistics.getPoints() + 1);
+};
+
+Engine.prototype.loseLife = function () {
+  this.statistics.setLives(this.statistics.getLives() - 1);
 };
 
 Engine.prototype.runWinActions = function () {
