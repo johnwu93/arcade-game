@@ -1,6 +1,6 @@
 /**
  *
- * @param {[Sprite]} characterSprites
+ * @param {[CharacterSprite]} characterSprites
  * @constructor
  */
 var CharacterSelectionModalView = function (characterSprites) {

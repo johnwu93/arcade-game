@@ -12,6 +12,7 @@ var Statistics = (function () {
    * @param {number} responseCode
    */
 
+  // noinspection NestedFunctionJS
   /**
    * @description Keeps statistics of the game
    * @param {number} points
@@ -20,7 +21,6 @@ var Statistics = (function () {
    * @param livesChangeCallback
    * @constructor
    */
-  // noinspection FunctionNamingConventionJS
   function Statistics(points, pointsChangeCallback, lives, livesChangeCallback) {
     myPointsChangeCallback = pointsChangeCallback;
     myLivesChangeCallback = livesChangeCallback;

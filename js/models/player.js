@@ -11,6 +11,12 @@ var Player = (function () {
 
 
   // noinspection NestedFunctionJS
+  /**
+   * @constructor
+   * @param {number} rowId
+   * @param {number} colId
+   * @param {CharacterSprite} sprite
+   */
   function Player(rowId, colId, sprite) {
     'use strict';
     RenderableUnit.call(this);

@@ -4,7 +4,7 @@
  * @param {number} rowId
  * @param {number} columnPosition
  * @param {number} speed
- * @param {Sprite} sprite
+ * @param {CharacterSprite} sprite
  * @constructor
  */
 var Enemy = function Enemy(rowId, columnPosition, speed, sprite) {
@@ -34,6 +34,6 @@ Enemy.prototype.getRenderData = function () {
 Enemy.prototype.update = function (timeChange) {
   var newPosition = this.columnPosition + timeChange * this.speed;
   var rightBoundary = CTX.canvas.width;
-  var leftBoundary = -1 * this.sprite.width; // initial point that an enemy will start
+  var leftBoundary = -1 * this.sprite.endBodyColumnPos; // initial point that an enemy will start
   this.columnPosition = rightBoundary < newPosition ? newPosition - rightBoundary + leftBoundary : newPosition;
 };

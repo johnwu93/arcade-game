@@ -45,6 +45,7 @@ Engine.prototype.simulate = function simulate(lastTime) {
 
   this.update(dt);
   this.render();
+  this.computeCollision();
 
   if (this.isWin()) {
     this.runWinActions();
@@ -58,12 +59,12 @@ Engine.prototype.simulate = function simulate(lastTime) {
 
 Engine.prototype.update = function update(dt) {
   this.updateEntities(dt);
-  this.computeCollision();
 };
 
 Engine.prototype.computeCollision = function () {
   'use strict';
 
+  // noinspection NestedFunctionJS
   /**
    * @param {Enemy} enemy
    */
@@ -71,16 +72,18 @@ Engine.prototype.computeCollision = function () {
     if (enemy.rowId !== this.player.getRow()) {
       return false;
     }
-    var enemyLeftStartLocation = enemy.columnPosition;
-    var enemyRightEndLocation = enemyLeftStartLocation + enemy.sprite.width;
+    var enemyLeftStartLocation = enemy.columnPosition + enemy.sprite.startBodyColumnPos;
+    var enemyRightEndLocation = enemy.columnPosition + enemy.sprite.endBodyColumnPos;
 
-    var playerLeftStartLocation = computeBlockColumnPosition(this.player.getColumn());
-    var playerRightEndLocation = playerLeftStartLocation + this.player.sprite.width;
+    var playerColumnOffset = computeBlockColumnPosition(this.player.getColumn());
+    var playerLeftStartLocation = playerColumnOffset + this.player.sprite.startBodyColumnPos;
+    var playerRightEndLocation = playerColumnOffset + this.player.sprite.endBodyColumnPos;
 
     return (enemyLeftStartLocation <= playerLeftStartLocation && playerLeftStartLocation <= enemyRightEndLocation) ||
       (enemyLeftStartLocation <= playerRightEndLocation && playerRightEndLocation <= enemyRightEndLocation);
   }
 
+  // noinspection NestedFunctionJS
   function runCollideAction() {
     this.resetPlayerPosition();
     this.loseLife();
