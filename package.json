@@ -1,0 +1,32 @@
+{
+  "name": "arcade-game",
+  "version": "1.0.0",
+  "description": "Frogger-like arcade game",
+  "simulate": "index.js",
+  "scripts": {
+    "lint": "eslint ./**/*.js"
+  },
+  "eslintConfig": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/udacity/frontend-nanodegree-arcade-game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/udacity/frontend-nanodegree-arcade-game/issues"
+  },
+  "homepage": "https://github.com/udacity/frontend-nanodegree-arcade-game#readme",
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-udacity": "^2.0.2",
+    "eslint-plugin-import": "^2.8.0"
+  },
+  "dependencies": {
+    "bootstrap": "^4.0.0-beta.2",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "lodash": "^4.17.4",
+    "popper": "^1.0.0"
+  }
+}
