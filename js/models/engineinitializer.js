@@ -6,8 +6,11 @@
 var initializeGame = function initializeGame(playerSprite) {
   'use strict';
   var enemies = [
-    new Enemy(3, 100, 100, CHARACTER_SPRITE_FACTORY.ENEMY_BUG),
-    new Enemy(2, 100, 200, CHARACTER_SPRITE_FACTORY.ENEMY_BUG)
+    new Enemy(3, 300, 100, CHARACTER_SPRITE_FACTORY.ENEMY_BUG),
+    new Enemy(2, 100, 300, CHARACTER_SPRITE_FACTORY.ENEMY_BUG),
+    new Enemy(2, 100, 200, CHARACTER_SPRITE_FACTORY.ENEMY_BUG),
+    new Enemy(1, 100, 200, CHARACTER_SPRITE_FACTORY.ENEMY_BUG),
+    new Enemy(1, 0, 100, CHARACTER_SPRITE_FACTORY.ENEMY_BUG)
   ];
 
   var player = new Player(5, 2, playerSprite);
