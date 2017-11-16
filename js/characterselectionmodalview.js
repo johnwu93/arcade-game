@@ -33,11 +33,11 @@ CharacterSelectionModalView.prototype.show = function show() {
  */
 CharacterSelectionModalView.prototype.bindInitialization = function (engineInitializationRunner) {
   var characterSprites = this.characterSprites;
-  $('.start-game__character-selection img').click((function (event) {
+  $('.start-game__character-selection img').click(function (event) {
     'use strict';
     var characterId = Number.parseInt(event.target.className);
     var characterSprite = characterSprites[characterId];
     $('#characterSelectionModal').modal('hide');
     Resources.onReady(engineInitializationRunner.call(null, characterSprite));
-  }));
+  });
 };

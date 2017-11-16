@@ -5,5 +5,5 @@ var bindScore = function (score) {
 
 var bindLives = function (lives) {
   'use strict';
-  $('.lives').html(lives)
+  $('.lives').html(lives);
 };

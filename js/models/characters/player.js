@@ -63,6 +63,7 @@ var Player = (function () {
    */
   Player.prototype.bindKeyBoard = function bindKeyBoard() {
     'use strict';
+    var player = this;
     var allowedKeys = {
       37: myMOVES.LEFT,
       38: myMOVES.UP,
@@ -70,7 +71,7 @@ var Player = (function () {
       40: myMOVES.DOWN
     };
     document.addEventListener('keyup', function (e) {
-      this.moveRequest = allowedKeys[e.keyCode];
+      player.moveRequest = allowedKeys[e.keyCode];
     });
 
   };
@@ -120,7 +121,10 @@ var Player = (function () {
    */
   Player.prototype.update = function update() {
     'use strict';
+    console.log('Move Request');
+    console.log(this.moveRequest);
     if (this.moveRequest !== null) {
+      console.log('Move is requested');
       this.move(this.moveRequest);
       this.moveRequest = null;
     }

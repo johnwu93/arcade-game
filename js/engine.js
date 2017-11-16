@@ -1,4 +1,5 @@
-/* Engine.js
+/**
+ * @description
  * This file provides the game loop functionality (update entities and render),
  * draws the initial game board on the screen, and then calls the update and
  * render methods on your player and enemy objects (defined in your app.js).
@@ -9,7 +10,7 @@
  * drawn but that is not the case. What's really happening is the entire "scene"
  * is being drawn over and over, presenting the illusion of animation.
  *
- * This engine makes the canvas' context (ctx) object globally available to make 
+ * This engine makes the canvas' context (ctx) object globally available to make
  * writing app.js a little simpler to work with.
  */
 
@@ -80,8 +81,8 @@ Engine.prototype.computeCollision = function () {
     var playerLeftStartLocation = playerColumnOffset + this.player.sprite.startBodyColumnPos;
     var playerRightEndLocation = playerColumnOffset + this.player.sprite.endBodyColumnPos;
 
-    return (enemyLeftStartLocation <= playerLeftStartLocation && playerLeftStartLocation <= enemyRightEndLocation) ||
-      (enemyLeftStartLocation <= playerRightEndLocation && playerRightEndLocation <= enemyRightEndLocation);
+    return enemyLeftStartLocation <= playerLeftStartLocation && playerLeftStartLocation <= enemyRightEndLocation ||
+      enemyLeftStartLocation <= playerRightEndLocation && playerRightEndLocation <= enemyRightEndLocation;
   }
 
   // noinspection NestedFunctionJS
