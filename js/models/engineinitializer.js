@@ -1,3 +1,8 @@
+/**
+ *
+ * @param {CharacterSprite} playerSprite
+ * @return {Engine}
+ */
 var initializeGame = function initializeGame(playerSprite) {
   'use strict';
   var enemies = [
@@ -7,8 +12,21 @@ var initializeGame = function initializeGame(playerSprite) {
 
   var player = new Player(5, 2, playerSprite);
   player.bindKeyBoard();
-  var engine = new Engine(enemies, player);
+  return new Engine(enemies, player);
+};
 
-  engine.resetPlayerPosition();
-  engine.simulate(Date.now());
+
+/**
+ *
+ * @param {CharacterSelectionModalView} characterSelectionModal
+ * @param {GameOverModalView} gameOverModal
+ */
+var bindModals = function bindModals(characterSelectionModal, gameOverModal) {
+  characterSelectionModal.bindInitialization(function (playerSprite) {
+    var engine = initializeGame(playerSprite);
+    engine.setGameOverRunner(gameOverModal.show.bind(gameOverModal));
+    engine.init();
+  });
+  gameOverModal.bindReset();
+  gameOverModal.bindCloseModal(characterSelectionModal);
 };

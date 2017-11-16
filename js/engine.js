@@ -43,7 +43,7 @@ Engine.prototype.simulate = function simulate(lastTime) {
   var now = Date.now(),
     dt = (now - lastTime) / 1000.0;
 
-  this.update(dt);
+  this.updateEntities(dt);
   this.render();
   this.computeCollision();
 
@@ -51,15 +51,16 @@ Engine.prototype.simulate = function simulate(lastTime) {
     this.runWinActions();
   }
 
-  /* Use the browser's requestAnimationFrame function to call this
-   * function again as soon as the browser is able to draw another frame.
-   */
-  window.requestAnimationFrame(this.simulate.bind(this, now));
+  if (this.isGameOver()) {
+    this.gameOverRunner();
+  } else {
+    /* Use the browser's requestAnimationFrame function to call this
+     * function again as soon as the browser is able to draw another frame.
+     */
+    window.requestAnimationFrame(this.simulate.bind(this, now));
+  }
 };
 
-Engine.prototype.update = function update(dt) {
-  this.updateEntities(dt);
-};
 
 Engine.prototype.computeCollision = function () {
   'use strict';
@@ -146,4 +147,21 @@ Engine.prototype.resetPlayerPosition = function () {
 Engine.prototype.init = function init() {
   this.resetPlayerPosition();
   this.simulate(Date.now());
+};
+
+Engine.prototype.isGameOver = function isGameOver() {
+  return this.statistics.getLives() < 0;
+};
+
+/**
+ * @callback gameOverRunner
+ * @param {Statistics} statistics
+ */
+
+/**
+ * @param {gameOverRunner} gameOverRunner
+ */
+Engine.prototype.setGameOverRunner = function (gameOverRunner) {
+  'use strict';
+  this.gameOverRunner = gameOverRunner;
 };

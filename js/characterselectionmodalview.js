@@ -14,22 +14,30 @@ CharacterSelectionModalView.prototype.render = function render() {
   var characterMarkups = this.characterSprites.map(function createCharacterSelectionMarkup(sprite, id) {
     return $('<img>', {src: sprite.imagePath, class: id.toString()});
   });
-  characterSelector.append(characterMarkups);
+  characterSelector.html(characterMarkups);
 };
 
 CharacterSelectionModalView.prototype.show = function show() {
   'use strict';
-  this.render();
   $('#characterSelectionModal').modal('show');
 };
 
+/**
+ * @callback engineInitializationRunner
+ * @param {CharacterSprite} characterSprite
+ */
 
-CharacterSelectionModalView.prototype.bindInitialization = function () {
+/**
+ *
+ * @param {engineInitializationRunner} engineInitializationRunner
+ */
+CharacterSelectionModalView.prototype.bindInitialization = function (engineInitializationRunner) {
   var characterSprites = this.characterSprites;
   $('.start-game__character-selection img').click((function (event) {
     'use strict';
     var characterId = Number.parseInt(event.target.className);
+    var characterSprite = characterSprites[characterId];
     $('#characterSelectionModal').modal('hide');
-    Resources.onReady(initializeGame.call(null, characterSprites[characterId]));
+    Resources.onReady(engineInitializationRunner.call(null, characterSprite));
   }));
 };

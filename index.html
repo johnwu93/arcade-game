@@ -9,7 +9,7 @@
 </head>
 <body class="text-center">
 
-  <aside class="modal fade" id="characterSelectionModal" tabindex="-1" aria-hidden="true" data-backdrop="static"  data-keyboard="false">
+  <aside class="modal fade" id="characterSelectionModal" tabindex="-1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <section class="modal-dialog" role="document">
       <div class="modal-content">
         <article class="modal-body">
@@ -25,6 +25,36 @@
       </div>
     </section>
   </aside>
+
+  <aside class="modal fade" id="gameOverModal" tabindex="-1" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <section class="modal-dialog" role="document">
+      <div class="modal-content">
+        <header class="modal-header">
+          <h5 class="modal-title"></h5>
+          <button type="button" class="close selectable-hover" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </header>
+        <article class="modal-body">
+
+          <h1 class="game-over__header text-center">Game Over</h1>
+
+          <h3>
+            Score: <span class="game-over__score"></span>
+          </h3>
+
+          <section class="game-over__play-again text-center py-3">
+            <button type="button" class="btn btn-danger selectable-hover" data-dismiss="modal">Play Again?</button>
+          </section>
+
+          <footer class="modal-footer">
+            <button type="button" class="btn btn-secondary selectable-hover" data-dismiss="modal">Close</button>
+          </footer>
+        </article>
+      </div>
+    </section>
+  </aside>
+
 
   <article class="container">
     <h1 class="text-uppercase">Frogger Game</h1>
@@ -69,6 +99,7 @@
   <script src="js/models/player.js"></script>
   <script src="js/models/statistics.js"></script>
   <script src="js/statisticsview.js"></script>
+  <script src="js/gameovermodalview.js"></script>
 
   <script src="js/models/engineinitializer.js"></script>
   <script src="js/characterselectionmodalview.js"></script>

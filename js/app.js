@@ -1,5 +1,7 @@
-
-
+/**
+ * This is the main component of the app.
+ * Modals are created on this script and bindings are invoked for the modals
+ */
 
 function loadResources() {
   // noinspection NestedFunctionJS
@@ -25,6 +27,9 @@ var characterSelectionModal = new CharacterSelectionModalView([
   CHARACTER_SPRITE_FACTORY.PLAYER_GIRL
 ]);
 
-characterSelectionModal.show();
-characterSelectionModal.bindInitialization();
 
+var gameOverModal = new GameOverModalView();
+
+characterSelectionModal.render();
+characterSelectionModal.show();
+bindModals(characterSelectionModal, gameOverModal);
