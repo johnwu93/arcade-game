@@ -1,5 +1,5 @@
 /**
- *
+ * @description Representation of a block of rows for the game
  * @param {number} rowId
  * @param {number} numCols
  * @param {Sprite} blockSprite
@@ -27,5 +27,6 @@ RowTerrain.prototype.render = function () {
 
 RowTerrain.prototype.alignRowCenter = function alignCenter(characterSprite) {
   'use strict';
+  // noinspection JSUnresolvedVariable
   return this.blockSprite.animationCenterRef.row - characterSprite.animationCenterRef.row;
 };

@@ -31,9 +31,14 @@ Enemy.prototype.getRenderData = function () {
   };
 };
 
+/**
+ * @description An enemy will move to the right of the screen at a constant speed. When goes out of
+ * the screen, it will reappear again to the left
+ * @param timeChange
+ */
 Enemy.prototype.update = function (timeChange) {
   var newPosition = this.columnPosition + timeChange * this.speed;
   var rightBoundary = CTX.canvas.width;
-  var leftBoundary = -1 * this.sprite.endBodyColumnPos; // initial point that an enemy will start
+  var leftBoundary = -1 * this.sprite.endBodyColumnPos;
   this.columnPosition = rightBoundary < newPosition ? newPosition - rightBoundary + leftBoundary : newPosition;
 };

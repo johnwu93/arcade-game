@@ -1,3 +1,6 @@
+/**
+ * @description Utility functions to help render characters and blocks
+ */
 var computeBlockColumnPosition = function computeBlockColumnPosition(columnId) {
   'use strict';
   return columnId * CTX.blockMetaInfo.column;

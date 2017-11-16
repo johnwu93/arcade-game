@@ -14,7 +14,7 @@ var Statistics = (function () {
 
   // noinspection NestedFunctionJS
   /**
-   * @description Keeps statistics of the game
+   * @description Keeps statistics, such as points and lives, of the game
    * @param {number} points
    * @param {pointsChangeCallback} pointsChangeCallback
    * @param {number} lives

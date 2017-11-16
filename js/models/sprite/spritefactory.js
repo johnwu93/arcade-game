@@ -1,6 +1,9 @@
 var SPRITE_COLUMN_CENTER = 115;
 var BLOCK_CENTER_POSITION = new Position(SPRITE_COLUMN_CENTER, 90);
 
+/**
+ * @description References to sprites for easy reuse
+ */
 var ENVIRONMENT_SPRITE_FACTORY = {
   STONE_BLOCK: new Sprite('images/stone-block.png', BLOCK_CENTER_POSITION),
   WATER_BLOCK: new Sprite('images/water-block.png', BLOCK_CENTER_POSITION),

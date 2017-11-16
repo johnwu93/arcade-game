@@ -1,5 +1,5 @@
 /**
- *
+ * @description Constructs the engine of the game
  * @param {CharacterSprite} playerSprite
  * @return {Engine}
  */
@@ -17,7 +17,7 @@ var initializeGame = function initializeGame(playerSprite) {
 
 
 /**
- *
+ * @description  Calls the bind functions for the characterSelectionModal and gameOverModal
  * @param {CharacterSelectionModalView} characterSelectionModal
  * @param {GameOverModalView} gameOverModal
  */

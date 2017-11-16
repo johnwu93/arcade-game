@@ -12,6 +12,7 @@ var Player = (function () {
 
   // noinspection NestedFunctionJS
   /**
+   * @description representation of a player
    * @constructor
    * @param {number} rowId
    * @param {number} colId
@@ -57,14 +58,11 @@ var Player = (function () {
     myColId = colId;
   };
 
-  Player.prototype.handleInput = function (moveCommand) {
-    'use strict';
-    this.moveRequest = moveCommand;
-  };
-
+  /**
+   * @description Binds a listener to the user's keyboard and receives keyboard press as a command
+   */
   Player.prototype.bindKeyBoard = function bindKeyBoard() {
     'use strict';
-    var player = this;
     var allowedKeys = {
       37: myMOVES.LEFT,
       38: myMOVES.UP,
@@ -72,19 +70,17 @@ var Player = (function () {
       40: myMOVES.DOWN
     };
     document.addEventListener('keyup', function (e) {
-      player.handleInput(allowedKeys[e.keyCode]);
+      this.moveRequest = allowedKeys[e.keyCode];
     });
 
   };
 
-  Player.prototype.update = function update() {
-    'use strict';
-    if (this.moveRequest !== null) {
-      this.move(this.moveRequest);
-      this.moveRequest = null;
-    }
-  };
-
+  /**
+   * @description Translates move commands and update the state of the player. It also ensures
+   * that the player does not move outside of the boundary. Nothing will happen if the user
+   * does not press an appropriate key
+   * @param command
+   */
   Player.prototype.move = function move(command) {
     'use strict';
     var col, row;
@@ -115,8 +111,18 @@ var Player = (function () {
         }
         break;
       default:
-        throw Error('Invalid Move');
         break;
+    }
+  };
+
+  /**
+   * @description determines if there is a move request to process
+   */
+  Player.prototype.update = function update() {
+    'use strict';
+    if (this.moveRequest !== null) {
+      this.move(this.moveRequest);
+      this.moveRequest = null;
     }
   };
 

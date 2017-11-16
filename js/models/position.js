@@ -1,5 +1,5 @@
 /**
- *
+ * @description representation of a position
  * @param {number}column
  * @param {number} row
  * @constructor
